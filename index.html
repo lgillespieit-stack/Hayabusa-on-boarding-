@@ -30,7 +30,7 @@ html{
 body{
   margin:0;
   background:
-    radial-gradient(circle at top right,#241011 0,transparent 30%),
+    radial-gradient(circle at top right,#241011 0,transparent 28%),
     var(--black);
   color:var(--white);
   font-family:Arial,Helvetica,sans-serif;
@@ -39,9 +39,13 @@ body{
 
 button,a,input{font:inherit}
 button{cursor:pointer}
+img{max-width:100%}
 
-img{
-  max-width:100%;
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible{
+  outline:3px solid white;
+  outline-offset:3px;
 }
 
 /* HEADER */
@@ -59,7 +63,7 @@ img{
   justify-content:space-between;
   gap:14px;
 
-  background:rgba(7,7,7,.96);
+  background:rgba(7,7,7,.97);
   backdrop-filter:blur(10px);
 
   border-bottom:1px solid var(--line);
@@ -99,7 +103,6 @@ img{
   border-radius:8px;
   min-height:46px;
   padding:11px 17px;
-
   font-weight:900;
   text-decoration:none;
 
@@ -132,13 +135,6 @@ img{
 
 .secondary-button:hover{
   background:#303030;
-}
-
-button:focus-visible,
-a:focus-visible,
-summary:focus-visible{
-  outline:3px solid white;
-  outline-offset:3px;
 }
 
 /* PROGRESS */
@@ -204,7 +200,6 @@ summary:focus-visible{
 
 .section-menu.open{
   display:grid;
-  animation:pageIn .2s ease;
 }
 
 .section-menu button{
@@ -216,7 +211,6 @@ summary:focus-visible{
 
   background:#1a1a1a;
   color:#fff;
-
   text-align:left;
 }
 
@@ -234,7 +228,6 @@ summary:focus-visible{
 
 .kicker{
   margin-bottom:8px;
-
   color:var(--red2);
 
   font-size:11px;
@@ -247,7 +240,6 @@ summary:focus-visible{
   margin:0 0 16px;
 
   color:#fff;
-
   font-size:clamp(38px,7vw,64px);
   line-height:.98;
   font-weight:900;
@@ -270,67 +262,41 @@ h1,h2,h3,h4,strong{
   color:#fff;
 }
 
-/* HERO */
+/* STANDARD IMAGES */
 
-.hero{
-  position:relative;
-  min-height:620px;
-
-  display:flex;
-  align-items:flex-end;
-
-  overflow:hidden;
-
-  border:1px solid var(--line);
-  border-radius:18px;
-
-  background:#111;
-}
-
-.hero-bg{
-  position:absolute;
-  inset:0;
-
+.feature-image{
+  display:block;
   width:100%;
-  height:100%;
+  max-height:540px;
 
   object-fit:cover;
+
+  border:1px solid var(--line);
+  border-radius:16px;
 }
 
-.hero-overlay{
-  position:absolute;
-  inset:0;
+.image-caption{
+  margin:9px 4px 0;
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.05) 15%,
-      rgba(0,0,0,.48) 55%,
-      rgba(0,0,0,.95) 100%
-    );
+  color:#8f8f8f;
+  font-size:12px;
 }
 
-.hero-content{
-  position:relative;
-  z-index:2;
+/* WELCOME */
 
-  width:100%;
-  padding:38px;
+.welcome-image-wrap{
+  margin-bottom:28px;
 }
 
-.hero-logo{
+.welcome-content{
+  max-width:850px;
+}
+
+.welcome-brand{
   width:105px;
   max-height:105px;
   object-fit:contain;
-
   margin-bottom:20px;
-
-  filter:drop-shadow(0 3px 10px rgba(0,0,0,.5));
-}
-
-.hero .lead{
-  max-width:650px;
-  color:#e8e8e8;
 }
 
 .hero-buttons{
@@ -346,7 +312,7 @@ h1,h2,h3,h4,strong{
   grid-template-columns:1.2fr .8fr;
   gap:14px;
 
-  margin-top:20px;
+  margin-top:30px;
 }
 
 .dashboard-card{
@@ -408,8 +374,7 @@ h1,h2,h3,h4,strong{
 
   transition:
     transform .2s ease,
-    border-color .2s ease,
-    background .2s ease;
+    border-color .2s ease;
 }
 
 .card:hover{
@@ -450,8 +415,6 @@ h1,h2,h3,h4,strong{
 }
 
 .persona{
-  position:relative;
-
   min-height:120px;
   padding:20px;
 
@@ -460,7 +423,6 @@ h1,h2,h3,h4,strong{
 
   background:#151515;
   color:#fff;
-
   text-align:left;
 }
 
@@ -495,14 +457,18 @@ h1,h2,h3,h4,strong{
   display:block;
 }
 
-/* FIRST CLASS */
+/* ACCORDIONS */
 
-.timeline{
+.timeline,
+.faq{
   display:grid;
   gap:10px;
 }
 
-.timeline details{
+.timeline details,
+.faq details,
+.standard,
+.discipline{
   overflow:hidden;
 
   border:1px solid var(--line);
@@ -511,7 +477,10 @@ h1,h2,h3,h4,strong{
   background:var(--panel);
 }
 
-.timeline summary{
+.timeline summary,
+.faq summary,
+.standard summary,
+.discipline summary{
   padding:17px;
 
   list-style:none;
@@ -521,37 +490,48 @@ h1,h2,h3,h4,strong{
   font-weight:900;
 }
 
-.timeline summary::-webkit-details-marker{
+.timeline summary::-webkit-details-marker,
+.faq summary::-webkit-details-marker,
+.standard summary::-webkit-details-marker,
+.discipline summary::-webkit-details-marker{
   display:none;
 }
 
-.timeline summary::after{
+.timeline summary::after,
+.faq summary::after,
+.standard summary::after,
+.discipline summary::after{
   content:"+";
   float:right;
   color:var(--red2);
   font-size:21px;
 }
 
-.timeline details[open] summary::after{
+.timeline details[open] summary::after,
+.faq details[open] summary::after,
+.standard[open] summary::after,
+.discipline[open] summary::after{
   content:"−";
 }
 
-.timeline-copy{
+.timeline-copy,
+.faq-answer,
+.standard-copy,
+.discipline-content{
   padding:0 17px 17px;
   color:var(--muted);
 }
 
-/* IMAGE */
+/* CULTURE */
 
 .section-photo{
   display:block;
-
   width:100%;
   max-height:500px;
 
   object-fit:cover;
 
-  margin:22px 0;
+  margin:22px 0 26px;
 
   border:1px solid var(--line);
   border-radius:14px;
@@ -565,52 +545,14 @@ h1,h2,h3,h4,strong{
   gap:10px;
 }
 
-.standard{
-  overflow:hidden;
-
-  border:1px solid var(--line);
-  border-radius:10px;
-
-  background:var(--panel);
-}
-
-.standard summary{
-  padding:16px;
-
-  list-style:none;
-  cursor:pointer;
-
-  color:#fff;
-  font-weight:900;
-}
-
-.standard summary::-webkit-details-marker{
-  display:none;
-}
-
-.standard summary::after{
-  content:"+";
-  float:right;
-  color:var(--red2);
-}
-
-.standard[open] summary::after{
-  content:"−";
-}
-
-.standard-copy{
-  padding:0 16px 16px;
-  color:var(--muted);
-}
-
 /* RASHGUARDS */
 
 .rashguards{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
+  gap:14px;
 
-  margin-top:20px;
+  margin-top:24px;
 }
 
 .rashguard{
@@ -629,12 +571,11 @@ h1,h2,h3,h4,strong{
   height:410px;
 
   object-fit:contain;
-
   background:#fff;
 }
 
 .rashguard-label{
-  padding:11px;
+  padding:12px;
 
   background:#151515;
   color:#fff;
@@ -654,46 +595,6 @@ h1,h2,h3,h4,strong{
   gap:12px;
 }
 
-.discipline{
-  overflow:hidden;
-
-  border:1px solid var(--line);
-  border-radius:11px;
-
-  background:var(--panel);
-}
-
-.discipline summary{
-  padding:19px;
-
-  list-style:none;
-  cursor:pointer;
-
-  color:#fff;
-  font-weight:900;
-  font-size:17px;
-}
-
-.discipline summary::-webkit-details-marker{
-  display:none;
-}
-
-.discipline summary::after{
-  content:"+";
-  float:right;
-  color:var(--red2);
-  font-size:21px;
-}
-
-.discipline[open] summary::after{
-  content:"−";
-}
-
-.discipline-content{
-  padding:0 19px 19px;
-  color:var(--muted);
-}
-
 .discipline-content strong{
   display:block;
   margin-top:10px;
@@ -701,55 +602,65 @@ h1,h2,h3,h4,strong{
 
 /* LUKE */
 
-.coach-hero{
-  position:relative;
+.coach-intro{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:25px;
 
-  min-height:520px;
-  margin:22px 0;
+  align-items:start;
 
-  display:flex;
-  align-items:flex-end;
-
-  overflow:hidden;
-
-  border:1px solid var(--line);
-  border-radius:16px;
-
-  background:#111;
+  margin-top:25px;
 }
 
-.coach-hero img{
-  position:absolute;
-  inset:0;
+.coach-photo-card{
+  width:100%;
+}
+
+.coach-photo{
+  display:block;
 
   width:100%;
-  height:100%;
+  max-width:300px;
+  max-height:360px;
 
   object-fit:cover;
+
+  border:1px solid var(--line);
+  border-radius:13px;
 }
 
-.coach-gradient{
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.03) 20%,
-      rgba(0,0,0,.9) 100%
-    );
+.coach-photo-caption{
+  margin-top:8px;
+  color:#888;
+  font-size:12px;
 }
 
-.coach-copy{
-  position:relative;
-  z-index:2;
+.coach-bio{
+  padding:24px;
 
-  max-width:720px;
-  padding:30px;
+  border:1px solid var(--line);
+  border-radius:13px;
+
+  background:var(--panel);
 }
 
-.coach-copy p{
-  color:#eee;
+.coach-bio h2{
+  margin:0 0 4px;
+  font-size:32px;
+}
+
+.coach-role{
+  margin-bottom:18px;
+
+  color:var(--red2);
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-size:12px;
+}
+
+.coach-bio p{
+  color:var(--muted);
 }
 
 .credential-grid{
@@ -757,7 +668,7 @@ h1,h2,h3,h4,strong{
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:10px;
 
-  margin:18px 0;
+  margin:24px 0 30px;
 }
 
 .credential{
@@ -771,60 +682,56 @@ h1,h2,h3,h4,strong{
 
 .credential strong{
   display:block;
+
   color:var(--red2);
   font-size:13px;
   text-transform:uppercase;
   letter-spacing:.05em;
 }
 
+/* LUKE DECORATIVE IMAGES */
+
 .coach-gallery{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
+  gap:16px;
 
-  margin-top:18px;
+  margin-top:20px;
 }
 
-.story-image{
-  position:relative;
-  min-height:390px;
-
+.story-card{
   overflow:hidden;
 
   border:1px solid var(--line);
   border-radius:13px;
 
-  background:#111;
+  background:var(--panel);
 }
 
-.story-image img{
-  position:absolute;
-  inset:0;
+.story-card img{
+  display:block;
 
   width:100%;
-  height:100%;
+  height:390px;
 
   object-fit:cover;
 }
 
-.story-overlay{
-  position:absolute;
-  inset:0;
-
-  display:flex;
-  align-items:flex-end;
-
-  padding:20px;
-
-  background:
-    linear-gradient(
-      transparent 45%,
-      rgba(0,0,0,.9)
-    );
+.story-copy{
+  padding:18px;
 }
 
-.story-overlay strong{
-  font-size:20px;
+.story-copy strong{
+  display:block;
+  margin-bottom:5px;
+
+  font-size:18px;
+}
+
+.story-copy p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
 }
 
 /* STEPS */
@@ -866,6 +773,13 @@ h1,h2,h3,h4,strong{
   background:#111;
 }
 
+.store-logo{
+  width:100px;
+  max-height:100px;
+  object-fit:contain;
+  margin-bottom:10px;
+}
+
 .store-area p{
   color:var(--muted);
 }
@@ -873,50 +787,6 @@ h1,h2,h3,h4,strong{
 .store-button{
   display:inline-block;
   margin-top:8px;
-}
-
-/* FAQ */
-
-.faq{
-  display:grid;
-  gap:10px;
-}
-
-.faq details{
-  border:1px solid var(--line);
-  border-radius:9px;
-
-  background:var(--panel);
-}
-
-.faq summary{
-  padding:16px;
-
-  list-style:none;
-  cursor:pointer;
-
-  color:#fff;
-  font-weight:900;
-}
-
-.faq summary::-webkit-details-marker{
-  display:none;
-}
-
-.faq summary::after{
-  content:"+";
-  float:right;
-  color:var(--red2);
-  font-size:21px;
-}
-
-.faq details[open] summary::after{
-  content:"−";
-}
-
-.faq-answer{
-  padding:0 16px 17px;
-  color:var(--muted);
 }
 
 /* CHECKLIST */
@@ -960,61 +830,40 @@ h1,h2,h3,h4,strong{
   font-size:13px;
 }
 
-/* COMPLETE */
+/* COMPLETION */
 
-.completion{
-  position:relative;
-
-  min-height:580px;
-
-  display:flex;
-  align-items:flex-end;
-
-  overflow:hidden;
-
-  border:1px solid var(--line);
-  border-radius:18px;
-}
-
-.completion img{
-  position:absolute;
-  inset:0;
+.completion-image{
+  display:block;
 
   width:100%;
-  height:100%;
+  max-height:500px;
 
   object-fit:cover;
-}
 
-.completion-overlay{
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0,0,0,.15),
-      rgba(0,0,0,.95)
-    );
+  border:1px solid var(--line);
+  border-radius:16px;
 }
 
 .completion-content{
-  position:relative;
-  z-index:2;
+  margin-top:25px;
+  padding:26px;
 
-  padding:35px;
+  border:1px solid var(--line);
+  border-radius:13px;
+
+  background:var(--panel);
 }
 
 .complete-badge{
   display:inline-block;
 
-  margin-bottom:12px;
+  margin-bottom:13px;
   padding:7px 11px;
 
-  border:1px solid rgba(255,255,255,.25);
+  border:1px solid #4c4c4c;
   border-radius:999px;
 
-  background:rgba(0,0,0,.45);
+  background:#202020;
   color:#fff;
 
   font-size:12px;
@@ -1050,6 +899,13 @@ footer{
   font-size:12px;
 }
 
+.footer-logo{
+  width:48px;
+  max-height:48px;
+  object-fit:contain;
+  margin-bottom:7px;
+}
+
 /* MOBILE */
 
 @media(max-width:700px){
@@ -1074,40 +930,8 @@ footer{
     padding:24px 15px 36px;
   }
 
-  .hero{
-    min-height:600px;
-  }
-
-  .hero-content{
-    padding:25px;
-  }
-
-  .hero-logo{
-    width:85px;
-  }
-
   .title{
     font-size:41px;
-  }
-
-  .rashguard img{
-    height:330px;
-  }
-
-  .story-image{
-    min-height:330px;
-  }
-
-  .coach-hero{
-    min-height:560px;
-  }
-
-  .coach-copy{
-    padding:23px;
-  }
-
-  .bottom-nav button{
-    flex:1;
   }
 
   .brand{
@@ -1127,6 +951,46 @@ footer{
 
   .progress{
     top:66px;
+  }
+
+  .welcome-brand{
+    width:85px;
+  }
+
+  .feature-image,
+  .completion-image{
+    max-height:360px;
+  }
+
+  .rashguard img{
+    height:330px;
+  }
+
+  /* Luke photo stays intentionally small */
+  .coach-intro{
+    display:block;
+  }
+
+  .coach-photo-card{
+    max-width:230px;
+    margin:0 auto 20px;
+  }
+
+  .coach-photo{
+    max-width:230px;
+    max-height:285px;
+  }
+
+  .coach-bio{
+    padding:20px;
+  }
+
+  .story-card img{
+    height:300px;
+  }
+
+  .bottom-nav button{
+    flex:1;
   }
 }
 </style>
@@ -1162,12 +1026,14 @@ footer{
 
 </header>
 
+
 <div class="progress">
   <div
     class="progress-fill"
     id="progressFill"
   ></div>
 </div>
+
 
 <main class="stage">
 
@@ -1177,88 +1043,44 @@ footer{
   aria-label="Onboarding sections"
 >
 
-<button data-view="welcome">
-  <b>00</b> Welcome
-</button>
-
-<button data-view="aboutyou">
-  <b>01</b> Your Journey
-</button>
-
-<button data-view="firstclass">
-  <b>02</b> First Class
-</button>
-
-<button data-view="culture">
-  <b>03</b> Team Culture
-</button>
-
-<button data-view="standards">
-  <b>04</b> Academy Standards
-</button>
-
-<button data-view="gear">
-  <b>05</b> Uniform & Gear
-</button>
-
-<button data-view="disciplines">
-  <b>06</b> Choose Your Path
-</button>
-
-<button data-view="coach">
-  <b>07</b> Meet Luke
-</button>
-
-<button data-view="belts">
-  <b>08</b> Progression
-</button>
-
-<button data-view="competition">
-  <b>09</b> Competition
-</button>
-
-<button data-view="store">
-  <b>10</b> Team Store
-</button>
-
-<button data-view="faq">
-  <b>11</b> FAQ
-</button>
-
-<button data-view="first30">
-  <b>12</b> First 30 Days
-</button>
-
-<button data-view="complete">
-  <b>✓</b> You're Ready
-</button>
+<button data-view="welcome"><b>00</b> Welcome</button>
+<button data-view="aboutyou"><b>01</b> Your Journey</button>
+<button data-view="firstclass"><b>02</b> First Class</button>
+<button data-view="culture"><b>03</b> Team Culture</button>
+<button data-view="standards"><b>04</b> Academy Standards</button>
+<button data-view="gear"><b>05</b> Uniform & Gear</button>
+<button data-view="disciplines"><b>06</b> Choose Your Path</button>
+<button data-view="coach"><b>07</b> Meet Luke</button>
+<button data-view="belts"><b>08</b> Progression</button>
+<button data-view="competition"><b>09</b> Competition</button>
+<button data-view="store"><b>10</b> Team Store</button>
+<button data-view="faq"><b>11</b> FAQ</button>
+<button data-view="first30"><b>12</b> First 30 Days</button>
+<button data-view="complete"><b>✓</b> You're Ready</button>
 
 </nav>
 
 
 <!-- WELCOME -->
 
-<section
-  class="view active"
-  data-page="welcome"
->
+<section class="view active" data-page="welcome">
 
-<div class="hero">
+<div class="welcome-image-wrap">
 
 <img
   src="images/team.jpg.JPG"
   alt="Hayabusa Training Centre team"
-  class="hero-bg"
+  class="feature-image"
 >
 
-<div class="hero-overlay"></div>
+</div>
 
-<div class="hero-content">
+<div class="welcome-content">
 
 <img
   src="images/logo.PNG"
   alt="Luke Harris Jiu-Jitsu"
-  class="hero-logo"
+  class="welcome-brand"
 >
 
 <div class="kicker">
@@ -1266,8 +1088,7 @@ footer{
 </div>
 
 <h1 class="title">
-  Welcome to<br>
-  <span>the Team.</span>
+  Welcome to <span>the Team.</span>
 </h1>
 
 <p class="lead">
@@ -1299,8 +1120,6 @@ footer{
 
 </div>
 
-</div>
-
 
 <div class="dashboard">
 
@@ -1310,9 +1129,7 @@ footer{
   Your Journey
 </div>
 
-<h3>
-  Onboarding Progress
-</h3>
+<h3>Onboarding Progress</h3>
 
 <div class="big-progress">
   <div
@@ -1355,10 +1172,7 @@ footer{
 
 <!-- ABOUT YOU -->
 
-<section
-  class="view"
-  data-page="aboutyou"
->
+<section class="view" data-page="aboutyou">
 
 <div class="kicker">
   01 — Make It Yours
@@ -1377,16 +1191,11 @@ footer{
 
 <div class="persona-grid">
 
-<button
-  class="persona"
-  data-persona="adult"
->
+<button class="persona" data-persona="adult">
 
 <span class="persona-icon">🥋</span>
 
-<strong>
-  I'm a new adult student
-</strong>
+<strong>I'm a new adult student</strong>
 
 <br>
 
@@ -1398,16 +1207,11 @@ footer{
 </button>
 
 
-<button
-  class="persona"
-  data-persona="parent"
->
+<button class="persona" data-persona="parent">
 
 <span class="persona-icon">👨‍👩‍👧</span>
 
-<strong>
-  I'm a parent
-</strong>
+<strong>I'm a parent</strong>
 
 <br>
 
@@ -1419,16 +1223,11 @@ footer{
 </button>
 
 
-<button
-  class="persona"
-  data-persona="competition"
->
+<button class="persona" data-persona="competition">
 
 <span class="persona-icon">🏆</span>
 
-<strong>
-  I'm interested in competition
-</strong>
+<strong>I'm interested in competition</strong>
 
 <br>
 
@@ -1440,16 +1239,11 @@ footer{
 </button>
 
 
-<button
-  class="persona"
-  data-persona="train"
->
+<button class="persona" data-persona="train">
 
 <span class="persona-icon">⚡</span>
 
-<strong>
-  I'm here to train
-</strong>
+<strong>I'm here to train</strong>
 
 <br>
 
@@ -1473,10 +1267,7 @@ footer{
 
 <!-- FIRST CLASS -->
 
-<section
-  class="view"
-  data-page="firstclass"
->
+<section class="view" data-page="firstclass">
 
 <div class="kicker">
   02 — Know Before You Go
@@ -1489,17 +1280,14 @@ footer{
 <p class="lead">
   New environments can feel intimidating.
   Knowing what happens next makes the
-  first class a lot easier.
+  first class easier.
 </p>
 
 
 <div class="timeline">
 
 <details>
-<summary>
-  1 — Arrive
-</summary>
-
+<summary>1 — Arrive</summary>
 <div class="timeline-copy">
   Give yourself enough time to get
   settled before class begins.
@@ -1508,10 +1296,7 @@ footer{
 
 
 <details>
-<summary>
-  2 — Check In
-</summary>
-
+<summary>2 — Check In</summary>
 <div class="timeline-copy">
   Let staff or your coach know you've
   arrived and that you're new.
@@ -1520,10 +1305,7 @@ footer{
 
 
 <details>
-<summary>
-  3 — Gear Up
-</summary>
-
+<summary>3 — Gear Up</summary>
 <div class="timeline-copy">
   Change into the appropriate clean
   uniform for your class and remove
@@ -1533,10 +1315,7 @@ footer{
 
 
 <details>
-<summary>
-  4 — Meet Your Coach
-</summary>
-
+<summary>4 — Meet Your Coach</summary>
 <div class="timeline-copy">
   Introduce yourself and let your coach
   know about any questions, concerns
@@ -1546,10 +1325,7 @@ footer{
 
 
 <details>
-<summary>
-  5 — Hit the Mats
-</summary>
-
+<summary>5 — Hit the Mats</summary>
 <div class="timeline-copy">
   You don't need to know everything.
   Listen, ask questions, be a good
@@ -1558,6 +1334,7 @@ footer{
 </details>
 
 </div>
+
 
 <div class="notice">
   <strong>Your job on day one?</strong>
@@ -1569,10 +1346,7 @@ footer{
 
 <!-- CULTURE -->
 
-<section
-  class="view"
-  data-page="culture"
->
+<section class="view" data-page="culture">
 
 <div class="kicker">
   03 — The Culture
@@ -1654,10 +1428,7 @@ footer{
 
 <!-- STANDARDS -->
 
-<section
-  class="view"
-  data-page="standards"
->
+<section class="view" data-page="standards">
 
 <div class="kicker">
   04 — Train Like a Teammate
@@ -1762,10 +1533,7 @@ footer{
 
 <!-- GEAR -->
 
-<section
-  class="view"
-  data-page="gear"
->
+<section class="view" data-page="gear">
 
 <div class="kicker">
   05 — Get Ready
@@ -1800,9 +1568,7 @@ footer{
 <h3>⚡ No-Gi Jiu-Jitsu</h3>
 <p>
   Wear the
-  <strong>
-    team rashguard and team shorts.
-  </strong>
+  <strong>team rashguard and team shorts.</strong>
 </p>
 </div>
 
@@ -1856,10 +1622,7 @@ footer{
 
 <!-- DISCIPLINES -->
 
-<section
-  class="view"
-  data-page="disciplines"
->
+<section class="view" data-page="disciplines">
 
 <div class="kicker">
   06 — Choose Your Path
@@ -1967,10 +1730,7 @@ footer{
 
 <!-- LUKE -->
 
-<section
-  class="view"
-  data-page="coach"
->
+<section class="view" data-page="coach">
 
 <div class="kicker">
   07 — Meet Your Coach
@@ -1981,46 +1741,60 @@ footer{
 </h2>
 
 <p class="lead">
-  High-level experience matters.
-  So does knowing how to build
-  a team where people can learn,
-  grow and keep showing up.
+  Decades of martial arts experience,
+  international competition and coaching
+  come together in the academy Luke
+  has built for his students.
 </p>
 
 
-<div class="coach-hero">
+<div class="coach-intro">
+
+<div class="coach-photo-card">
 
 <img
   src="images/harriscoach.JPG"
-  alt="Luke Harris coaching students"
+  alt="Luke Harris coaching younger students"
+  class="coach-photo"
 >
 
-<div class="coach-gradient"></div>
+<div class="coach-photo-caption">
+  Luke Harris with young athletes
+  at Hayabusa Training Centre.
+</div>
 
-<div class="coach-copy">
+</div>
 
-<div class="kicker">
+
+<div class="coach-bio">
+
+<div class="coach-role">
   Owner & Head Instructor
 </div>
 
-<h2>
-  Luke Harris
-</h2>
+<h2>Luke Harris</h2>
 
 <p>
-  Luke Harris is a lifelong martial
-  artist and black belt in both
-  Brazilian Jiu-Jitsu and Judo.
+  Luke is a lifelong martial artist
+  and black belt in both Brazilian
+  Jiu-Jitsu and Judo.
+</p>
+
+<p>
   His experience spans international
   competition, professional MMA and
   coaching athletes at a high level.
+  He is a former member of the
+  Canadian National Judo Team and
+  has competed internationally across
+  multiple combat sports.
 </p>
 
 <p>
   At Hayabusa Training Centre,
-  that experience becomes something
-  bigger: helping students develop
-  skill, confidence, discipline
+  that experience is brought back
+  to the mats to help students develop
+  technique, confidence, discipline
   and a lasting connection to
   martial arts.
 </p>
@@ -2044,17 +1818,20 @@ Black Belt
 
 <div class="credential">
 <strong>International Experience</strong>
-Former Canadian National Judo Team member
+Former Canadian National
+Judo Team member
 </div>
 
 <div class="credential">
 <strong>Professional MMA</strong>
-Former professional mixed martial artist
+Former professional
+mixed martial artist
 </div>
 
 <div class="credential">
-<strong>BJJ Competition</strong>
-International championship experience
+<strong>Competition</strong>
+International Brazilian Jiu-Jitsu
+competition experience
 </div>
 
 <div class="credential">
@@ -2068,33 +1845,49 @@ high-level athletes
 
 <div class="coach-gallery">
 
-<div class="story-image">
+<div class="story-card">
 
 <img
   src="images/harrisback.JPG"
-  alt="Harris martial arts uniform"
+  alt="Luke Harris wearing martial arts gear with Harris on the back"
 >
 
-<div class="story-overlay">
+<div class="story-copy">
+
 <strong>
-  Experience built on the mats.
+  Experience Built on the Mats
 </strong>
-</div>
+
+<p>
+  Years of training and competition
+  become knowledge that can be passed
+  to the next generation.
+</p>
 
 </div>
 
+</div>
 
-<div class="story-image">
+
+<div class="story-card">
 
 <img
   src="images/harrisbelt.JPG"
-  alt="Harris martial arts belt"
+  alt="Martial arts belt embroidered with Harris"
 >
 
-<div class="story-overlay">
+<div class="story-copy">
+
 <strong>
-  Progress is earned over time.
+  Progress Is Earned
 </strong>
+
+<p>
+  Belts represent time, development,
+  resilience and the work that happens
+  between promotions.
+</p>
+
 </div>
 
 </div>
@@ -2106,10 +1899,7 @@ high-level athletes
 
 <!-- PROGRESSION -->
 
-<section
-  class="view"
-  data-page="belts"
->
+<section class="view" data-page="belts">
 
 <div class="kicker">
   08 — The Long Game
@@ -2132,9 +1922,7 @@ high-level athletes
 <div class="number">1</div>
 <div>
 <h3>Consistency</h3>
-<p>
-  Build a regular training habit.
-</p>
+<p>Build a regular training habit.</p>
 </div>
 </div>
 
@@ -2179,7 +1967,7 @@ high-level athletes
 
 <div class="notice">
   Promotion standards are determined
-  by the coaching team. This concept
+  by the coaching team. This section
   can be updated with Hayabusa's exact
   promotion process.
 </div>
@@ -2189,10 +1977,7 @@ high-level athletes
 
 <!-- COMPETITION -->
 
-<section
-  class="view"
-  data-page="competition"
->
+<section class="view" data-page="competition">
 
 <div class="kicker">
   09 — Test Yourself
@@ -2204,9 +1989,8 @@ high-level athletes
 
 <p class="lead">
   Competition isn't required.
-  But for students who want the
-  challenge, the team can help
-  guide the process.
+  For students who want the challenge,
+  the team can help guide the process.
 </p>
 
 
@@ -2265,7 +2049,9 @@ high-level athletes
   class="personal-message"
   id="competitionMessage"
 >
-  <strong>Competition was one of your goals.</strong>
+  <strong>
+    Competition was one of your goals.
+  </strong>
   This is a section you'll probably want
   to revisit as you gain experience.
 </div>
@@ -2275,10 +2061,7 @@ high-level athletes
 
 <!-- STORE -->
 
-<section
-  class="view"
-  data-page="store"
->
+<section class="view" data-page="store">
 
 <div class="kicker">
   10 — Represent the Team
@@ -2300,17 +2083,10 @@ high-level athletes
 <img
   src="images/logo.PNG"
   alt="Luke Harris Jiu-Jitsu logo"
-  style="
-    width:100px;
-    max-height:100px;
-    object-fit:contain;
-    margin-bottom:10px;
-  "
+  class="store-logo"
 >
 
-<h3>
-  Official Team Gear
-</h3>
+<h3>Official Team Gear</h3>
 
 <p>
   Need a Gi, rashguard, shorts
@@ -2333,10 +2109,7 @@ high-level athletes
 
 <!-- FAQ -->
 
-<section
-  class="view"
-  data-page="faq"
->
+<section class="view" data-page="faq">
 
 <div class="kicker">
   11 — Questions Are Normal
@@ -2354,9 +2127,7 @@ high-level athletes
 <div class="faq">
 
 <details>
-<summary>
-  What should I wear?
-</summary>
+<summary>What should I wear?</summary>
 <div class="faq-answer">
   Wear the approved uniform for
   your class. If you're unsure,
@@ -2471,10 +2242,7 @@ high-level athletes
 
 <!-- FIRST 30 DAYS -->
 
-<section
-  class="view"
-  data-page="first30"
->
+<section class="view" data-page="first30">
 
 <div class="kicker">
   12 — Build the Habit
@@ -2494,9 +2262,7 @@ high-level athletes
 
 <label class="check">
 <input type="checkbox">
-<span>
-  I know what to wear to class.
-</span>
+<span>I know what to wear to class.</span>
 </label>
 
 
@@ -2511,8 +2277,7 @@ high-level athletes
 <label class="check">
 <input type="checkbox">
 <span>
-  I've introduced myself
-  to my coach.
+  I've introduced myself to my coach.
 </span>
 </label>
 
@@ -2520,8 +2285,7 @@ high-level athletes
 <label class="check">
 <input type="checkbox">
 <span>
-  I know which disciplines
-  interest me.
+  I know which disciplines interest me.
 </span>
 </label>
 
@@ -2529,8 +2293,7 @@ high-level athletes
 <label class="check">
 <input type="checkbox">
 <span>
-  I understand that progress
-  takes time.
+  I understand that progress takes time.
 </span>
 </label>
 
@@ -2538,8 +2301,7 @@ high-level athletes
 <label class="check">
 <input type="checkbox">
 <span>
-  I know who to talk to
-  about competition.
+  I know who to talk to about competition.
 </span>
 </label>
 
@@ -2547,8 +2309,7 @@ high-level athletes
 <label class="check">
 <input type="checkbox">
 <span>
-  I know where to get
-  team gear.
+  I know where to get team gear.
 </span>
 </label>
 
@@ -2556,8 +2317,8 @@ high-level athletes
 <label class="check">
 <input type="checkbox">
 <span>
-  I've started building
-  a consistent training routine.
+  I've started building a consistent
+  training routine.
 </span>
 </label>
 
@@ -2570,6 +2331,7 @@ high-level athletes
   0 of 8 complete
 </div>
 
+
 <div
   class="personal-message"
   id="parentMessage"
@@ -2577,28 +2339,23 @@ high-level athletes
   <strong>For parents:</strong>
   helping your child prepare their
   clean gear before class can make
-  training days much easier and help
+  training days easier and help
   them build independence over time.
 </div>
 
 </section>
 
 
-<!-- COMPLETE -->
+<!-- COMPLETION -->
 
-<section
-  class="view"
-  data-page="complete"
->
-
-<div class="completion">
+<section class="view" data-page="complete">
 
 <img
   src="images/team.jpg.JPG"
   alt="Hayabusa Training Centre team"
+  class="completion-image"
 >
 
-<div class="completion-overlay"></div>
 
 <div class="completion-content">
 
@@ -2616,6 +2373,7 @@ high-level athletes
   learning and becoming part
   of the team.
 </p>
+
 
 <div class="hero-buttons">
 
@@ -2643,8 +2401,6 @@ high-level athletes
 >
   TEAM STORE
 </a>
-
-</div>
 
 </div>
 
@@ -2691,12 +2447,7 @@ high-level athletes
 <img
   src="images/logo.PNG"
   alt=""
-  style="
-    width:48px;
-    max-height:48px;
-    object-fit:contain;
-    margin-bottom:7px;
-  "
+  class="footer-logo"
 >
 
 <br>
@@ -2795,6 +2546,7 @@ function showPage(pageName){
   }
 
   currentPage = pageIndex;
+
 
   views.forEach(view => {
 
@@ -2896,9 +2648,7 @@ document
 
 
 document
-  .querySelectorAll(
-    "#sectionMenu button"
-  )
+  .querySelectorAll("#sectionMenu button")
   .forEach(button => {
 
     button.addEventListener(
