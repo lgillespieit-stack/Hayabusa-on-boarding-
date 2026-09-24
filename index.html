@@ -10,13 +10,11 @@
 :root {
   --black: #080808;
   --panel: #151515;
-  --panel2: #1d1d1d;
   --red: #d71920;
   --red-light: #ff4b52;
   --white: #ffffff;
   --muted: #c9c9c9;
   --line: #383838;
-  --green: #65cf98;
 }
 
 * {
@@ -44,7 +42,7 @@ button {
   cursor: pointer;
 }
 
-/* ---------- HEADER ---------- */
+/* HEADER */
 
 .topbar {
   position: sticky;
@@ -119,7 +117,7 @@ summary:focus-visible {
   outline-offset: 3px;
 }
 
-/* ---------- PROGRESS ---------- */
+/* PROGRESS */
 
 .progress {
   height: 5px;
@@ -129,26 +127,22 @@ summary:focus-visible {
 .progress-fill {
   width: 10%;
   height: 100%;
-
   background: var(--red);
-
   transition: width .3s ease;
 }
 
-/* ---------- PAGE ---------- */
+/* PAGE */
 
 .stage {
   max-width: 1050px;
   margin: auto;
-
   padding: 32px 22px 40px;
 }
 
-/* ---------- SECTION MENU ---------- */
+/* MENU */
 
 .section-menu {
   display: none;
-
   grid-template-columns: repeat(2, minmax(0,1fr));
   gap: 7px;
 
@@ -156,7 +150,6 @@ summary:focus-visible {
   padding: 10px;
 
   background: #101010;
-
   border: 1px solid var(--line);
   border-radius: 10px;
 }
@@ -167,7 +160,6 @@ summary:focus-visible {
 
 .section-menu button {
   min-height: 50px;
-
   padding: 11px 13px;
 
   text-align: left;
@@ -189,7 +181,7 @@ summary:focus-visible {
   margin-right: 7px;
 }
 
-/* ---------- VIEWS ---------- */
+/* VIEWS */
 
 .view {
   display: none;
@@ -205,7 +197,7 @@ summary:focus-visible {
   to { opacity: 1; }
 }
 
-/* ---------- TYPOGRAPHY ---------- */
+/* TYPOGRAPHY */
 
 .kicker {
   margin-bottom: 8px;
@@ -251,7 +243,7 @@ strong {
   color: #fff;
 }
 
-/* ---------- WELCOME ---------- */
+/* WELCOME */
 
 .welcome {
   text-align: center;
@@ -280,13 +272,11 @@ strong {
   display: inline-block;
 }
 
-/* ---------- CARDS ---------- */
+/* CARDS */
 
 .grid {
   display: grid;
-
   grid-template-columns: repeat(2,minmax(0,1fr));
-
   gap: 14px;
 }
 
@@ -315,7 +305,7 @@ strong {
   grid-column: 1 / -1;
 }
 
-/* ---------- IMAGES ---------- */
+/* IMAGES */
 
 .section-photo {
   display: block;
@@ -331,13 +321,11 @@ strong {
   border-radius: 12px;
 }
 
-/* ---------- RASHGUARDS ---------- */
+/* RASHGUARDS */
 
 .rashguards {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 12px;
 
   margin-top: 20px;
@@ -377,11 +365,10 @@ strong {
   letter-spacing: .05em;
 }
 
-/* ---------- NOTICE ---------- */
+/* NOTICE */
 
 .notice {
   margin-top: 18px;
-
   padding: 16px 18px;
 
   background: #1b0d0e;
@@ -391,13 +378,11 @@ strong {
   color: #eee;
 }
 
-/* ---------- STEPS ---------- */
+/* STEPS */
 
 .step {
   display: flex;
-
   align-items: flex-start;
-
   gap: 14px;
 }
 
@@ -408,7 +393,6 @@ strong {
   height: 32px;
 
   display: grid;
-
   place-items: center;
 
   border-radius: 50%;
@@ -419,13 +403,11 @@ strong {
   font-weight: 900;
 }
 
-/* ---------- COACHES ---------- */
+/* COACHES */
 
 .coach {
   display: flex;
-
   align-items: center;
-
   gap: 15px;
 }
 
@@ -436,7 +418,6 @@ strong {
   height: 62px;
 
   display: grid;
-
   place-items: center;
 
   background: #272727;
@@ -445,15 +426,13 @@ strong {
   border-radius: 50%;
 
   color: #fff;
-
   font-weight: 900;
 }
 
-/* ---------- STORE ---------- */
+/* STORE */
 
 .store-area {
   margin-top: 25px;
-
   padding: 24px;
 
   text-align: center;
@@ -481,11 +460,10 @@ strong {
   padding-right: 25px;
 }
 
-/* ---------- FAQ ---------- */
+/* FAQ */
 
 .faq {
   display: grid;
-
   gap: 10px;
 }
 
@@ -502,11 +480,9 @@ strong {
   padding: 16px;
 
   list-style: none;
-
   cursor: pointer;
 
   color: #fff;
-
   font-weight: 900;
 }
 
@@ -520,7 +496,6 @@ strong {
   float: right;
 
   color: var(--red-light);
-
   font-size: 21px;
 }
 
@@ -530,21 +505,17 @@ strong {
 
 .faq-answer {
   padding: 0 16px 17px;
-
   color: var(--muted);
 }
 
-/* ---------- CHECKLIST ---------- */
+/* CHECKLIST */
 
 .check {
   display: flex;
-
   align-items: flex-start;
-
   gap: 11px;
 
   margin: 9px 0;
-
   padding: 14px;
 
   background: var(--panel);
@@ -566,7 +537,6 @@ strong {
 
 .check.complete {
   background: #132019;
-
   border-color: #4f8060;
 }
 
@@ -576,29 +546,25 @@ strong {
   text-align: center;
 
   color: var(--muted);
-
   font-size: 13px;
 }
 
-/* ---------- BOTTOM NAV ---------- */
+/* BOTTOM NAV */
 
 .bottom-nav {
   display: flex;
-
   justify-content: space-between;
-
   gap: 10px;
 
   flex-wrap: wrap;
 
   margin-top: 32px;
-
   padding-top: 20px;
 
   border-top: 1px solid var(--line);
 }
 
-/* ---------- FOOTER ---------- */
+/* FOOTER */
 
 footer {
   padding: 20px;
@@ -610,11 +576,10 @@ footer {
   border-top: 1px solid var(--line);
 
   color: #999;
-
   font-size: 12px;
 }
 
-/* ---------- MOBILE ---------- */
+/* MOBILE */
 
 @media (max-width:650px) {
 
@@ -675,12 +640,10 @@ footer {
 
 
 <div class="progress">
-
   <div
     class="progress-fill"
     id="progressFill"
   ></div>
-
 </div>
 
 
@@ -748,7 +711,7 @@ footer {
 <div class="welcome">
 
 <img
-  src="images/team.jpg"
+  src="images/team.jpg.JPG"
   alt="Hayabusa Training Centre team"
   class="welcome-photo"
 >
@@ -854,7 +817,7 @@ footer {
 <div class="rashguard">
 
 <img
-  src="images/rashguard-front.jpg"
+  src="images/rashgaurd-front.jpg.JPG"
   alt="Front of Hayabusa Training Centre team rashguard"
 >
 
@@ -868,7 +831,7 @@ footer {
 <div class="rashguard">
 
 <img
-  src="images/rashguard-back.jpg"
+  src="images/rashgaurd-back.jpg.JPG"
   alt="Back of Hayabusa Training Centre team rashguard"
 >
 
@@ -918,7 +881,7 @@ team store.
 
 
 <img
-  src="images/training.jpg"
+  src="images/training.jpg.JPG"
   alt="Students training at Hayabusa Training Centre"
   class="section-photo"
 >
